@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.20.0",
-    "discord-rpc": "^3.1.4",
-    "@iarna/toml": "^3.0.0"
+    "discord-rpc": "^3.1.4"
   }
 }
