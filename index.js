@@ -31,6 +31,7 @@ async function setFront() {
 		if (members.length > 127) {
 			members = front.members.map(m => m.name).join(", ");
 		}
+
 		if (clientId == defaultClientId) {
 			activity = {
 				details: members || "(none)",
@@ -38,15 +39,22 @@ async function setFront() {
 				startTimestamp: new Date(front.timestamp)
 			};
 		} else {
+			// don't show IDs if config option is set
+			if (config.hide_id) {
+				lText = front.members[0]?.name;
+				sText = system.name;
+			} else {
+				lText = "pk;m " + front.members[0]?.id;
+				sText = "pk;s " + system.id;
+			}
 			activity = {
 				details: members || "(none)",
 				state: system.name || "---",
 				startTimestamp: new Date(front.timestamp),
-				//uncomment below if you want images & are using your own client
 				largeImageKey: front.members[0]?.id || "none",
-				largeImageText: "pk;m " + front.members[0]?.id || "none",
+				largeImageText: lText || "none",
 				smallImageKey: system.id,
-				smallImageText: "pk;s " + system.id || "system",
+				smallImageText: sText || "system",
 				instance: false
 			};
 		}

@@ -1,4 +1,5 @@
 {
     "clientId": "769225344484900915",
-    "use_name_by_default": false
+    "use_name_by_default": false,
+    "hide_id": false
 }
