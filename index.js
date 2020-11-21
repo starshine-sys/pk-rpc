@@ -2,7 +2,10 @@ const DiscordRPC = require('discord-rpc');
 const axios = require('axios');
 const defaultClientId = '757707416719851651';
 const config = require('./config.json');
-const clientId = config.clientId;
+let clientId = config.clientId;
+if (!clientId) {
+	clientId = defaultClientId;
+}
 
 DiscordRPC.register(clientId);
 const client = new DiscordRPC.Client({ transport: 'ipc' });
